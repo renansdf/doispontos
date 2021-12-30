@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IProjects, loadProjects } from '../../api';
 
+import Header from '../../components/Header';
+
+import { Container, Project, LinkText } from './styles';
+
 const Home: React.FC = () => {
   const [projects, setProjects] = useState<IProjects>();
 
@@ -16,11 +20,18 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {projects && projects.results.map(project => (
-        <div key={project.id}>
-          <Link to={`/projeto/${project.uid}`}>{project.data.titulo_do_projeto[0].text}</Link>
-        </div>
-      ))}
+      <Header />
+      <Container>
+        {projects && projects.results.map(project => (
+          <Project key={project.id} bgUrl={project.data.imagens[0].imagem.url}>
+            <Link to={`/projeto/${project.uid}`}>
+              <LinkText>
+                {project.data.titulo_do_projeto[0].text}
+              </LinkText>
+            </Link>
+          </Project>
+        ))}
+      </Container>
     </>
   );
 }
