@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.main`
   scroll-snap-type: y mandatory;
-  max-height: 100vh;
+  max-height: 88vh;
   overflow-y: scroll;
 `;
 

@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { IProject, loadProject } from '../../api';
-import Header from '../../components/Header';
 
 import { Container, Title, Image } from './styles';
+import Layout from '../../components/Layout';
 
 const Project: React.FC = () => {
   const params = useParams();
@@ -19,11 +19,10 @@ const Project: React.FC = () => {
 
   useEffect(() => {
     load()
-  }, [load]);
+  }, []);
 
   return (
-    <>
-      <Header />
+    <Layout>
       <Container itemsAmount={project?.fields.animations.length || 0}>
         <Title position={1}>{project?.fields.title}</Title>
         {project && project.fields.animations.map((obj, index) => (
@@ -35,7 +34,7 @@ const Project: React.FC = () => {
           />
         ))}
       </Container>
-    </>
+    </Layout>
   )
 }
 
