@@ -24,13 +24,13 @@ const Project: React.FC = () => {
   return (
     <>
       <Header />
-      <Container itemsAmount={project?.data.imagens.length || 0}>
-        <Title position={1}>{project?.data.titulo_do_projeto[0].text}</Title>
-        {project && project.data.imagens.map((obj, index) => (
+      <Container itemsAmount={project?.fields.animations.length || 0}>
+        <Title position={1}>{project?.fields.title}</Title>
+        {project && project.fields.animations.map((obj, index) => (
           <Image 
-            key={obj.imagem.url} 
-            src={obj.imagem.url} 
-            alt={obj.imagem.url} 
+            key={obj.fields.file.url} 
+            src={obj.fields.file.url} 
+            alt={obj.fields.file.url} 
             position={index+2}
           />
         ))}

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { IProjects, loadProjects } from '../../api';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { loadProjects, IProject } from '../../api'
 
-import Header from '../../components/Header';
+import Header from '../../components/Header'
 
-import { Container, Project, LinkText } from './styles';
+import { Container, Project, LinkText } from './styles'
 
 const Home: React.FC = () => {
-  const [projects, setProjects] = useState<IProjects>();
+  const [projects, setProjects] = useState<IProject[]>()
 
-  const load = async ()=>{
-    const loadedProjects = await loadProjects();
-    setProjects(loadedProjects);
+  const load = async () => {
+    const loadedProjects = await loadProjects()
+    setProjects(loadedProjects)
   }
 
   useEffect(() => {
@@ -22,11 +22,11 @@ const Home: React.FC = () => {
     <>
       <Header />
       <Container>
-        {projects && projects.results.map(project => (
-          <Project key={project.id} bgUrl={project.data.imagens[0].imagem.url}>
-            <Link to={`/projeto/${project.uid}`}>
+        {projects && projects.map(project => (
+          <Project key={project.sys.id} bgUrl={project.fields.animations[0].fields.file.url}>
+            <Link to={`/projeto/${project.sys.id}`}>
               <LinkText>
-                {project.data.titulo_do_projeto[0].text}
+                {project.fields.title}
               </LinkText>
             </Link>
           </Project>
