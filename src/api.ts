@@ -21,12 +21,10 @@ export interface IProject {
 
 export const loadProjects = async () => {
   const response = await client.getEntries<IProjectFields>()
-  console.log(response.items)
   return response.items
 }
 
 export const loadProject = async (id: string) => {
   const response = await client.getEntry<IProjectFields>(id)
-  console.log(response)
   return response
 }
