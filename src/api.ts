@@ -1,39 +1,32 @@
-import Prismic from '@prismicio/client'
-// import { Date, Link, RichText } from 'prismic-reactjs'
+import {createClient, Asset, Entry} from 'contentful'
 
-const apiEndpoint = 'https://doispontos.prismic.io/api/v2';
-const accessToken = process.env.REACT_APP_PRISMIC_TOKEN;
+const client = createClient({
+  space: process.env.REACT_APP_CONTENTFUL_SPACE_ID || '',
+  accessToken: process.env.REACT_APP_CONTENTFUL_PRODUCTION_TOKEN || ''
+})
 
-const Client = Prismic.client(apiEndpoint, { accessToken })
+export interface IProjectFields {
+  animations: Asset[];
+  description: any; // this is rich text
+  makingof: Asset[];
+  title: string;
+}
 
-export interface IProject{
-  id: string;
-  uid?: string;
-  data: {
-    titulo_do_projeto: {
-      text: string;
-    }[],
-    imagens: {
-      imagem: {
-        url: string;
-      }
-    }[],
-    video: {}
+export interface IProject {
+  fields: IProjectFields;
+  sys: {
+    id: string;
   }
 }
 
-export interface IProjects {
-  results: IProject[]
-}
-
 export const loadProjects = async () => {
-  const response: IProjects = await Client.query(
-    Prismic.Predicates.at('document.type', 'projetos')
-  )
-  return response
+  const response = await client.getEntries<IProjectFields>()
+  console.log(response.items)
+  return response.items
 }
 
-export const loadProject = async (uid: string) => {
-  const response: IProject = await Client.getByUID('projetos', uid, {})
+export const loadProject = async (id: string) => {
+  const response = await client.getEntry<IProjectFields>(id)
+  console.log(response)
   return response
 }
