@@ -4,8 +4,7 @@ Home do estúdio de design carioca Dois Pontos
 - detalhes de projetos
 
 ## Stack
-React
-Typescript
-Next
-Headless CMS com PrismicJS
-Hospedade em Vercel
+- React
+- Typescript
+- Headless CMS com ContentfulJS
+- Hospedado em Vercel
