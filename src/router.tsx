@@ -1,20 +1,41 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, redirect } from 'react-router-dom';
 
 import Home from './pages/home';
 import Project from './pages/project';
 import About from './pages/about';
+import NotFound from './pages/notfound';
+import Layout from './components/Layout';
 
-const Router: React.FC = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/projeto/:projectid" element={<Project />} />
-                <Route path="/sobre" element={<About />} />
-            </Routes>
-        </BrowserRouter>
-    )
-}
+import { loadProjects } from './api';
+
+const Router = createBrowserRouter([
+    {
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                element: <Home />,
+                loader: loadProjects,
+            },
+            {
+                path: "projeto/:projectid",
+                element: <Project />,
+            },
+            {
+                path: "sobre",
+                element: <About />,
+            }
+            
+        ]
+    },
+    {
+        path: "not-found",
+        element: <NotFound />,
+    },
+    {
+        path: "*",
+        loader: () => redirect("/not-found")
+    }
+]);
 
 export default Router

@@ -1,14 +1,15 @@
 import React from 'react'
-import Header from '../Header'
+import { Outlet } from 'react-router-dom'
 
+import Header from '../Header'
 import { Wrapper, Content } from './styles'
 
-const Layout: React.FC = ({children}) => {
+const Layout: React.FC = () => {
     return (
         <Wrapper>
             <Header />
             <Content>
-                {children}
+                <Outlet />
             </Content>
         </Wrapper>
     )

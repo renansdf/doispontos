@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { IProject, loadProject } from '../../api';
 
 import { Container, Title, Image } from './styles';
-import Layout from '../../components/Layout';
 
 const Project: React.FC = () => {
   const params = useParams();
@@ -22,19 +21,17 @@ const Project: React.FC = () => {
   }, []);
 
   return (
-    <Layout>
-      <Container itemsAmount={project?.fields.animations.length || 0}>
-        <Title position={1}>{project?.fields.title}</Title>
-        {project && project.fields.animations.map((obj, index) => (
-          <Image 
-            key={obj.fields.file.url} 
-            src={obj.fields.file.url} 
-            alt={obj.fields.file.url} 
-            position={index+2}
-          />
-        ))}
-      </Container>
-    </Layout>
+    <Container itemsAmount={project?.fields.animations.length || 0}>
+      <Title position={1}>{project?.fields.title}</Title>
+      {project && project.fields.animations.map((obj, index) => (
+        <Image 
+          key={obj.fields.file.url} 
+          src={obj.fields.file.url} 
+          alt={obj.fields.file.url} 
+          position={index+2}
+        />
+      ))}
+    </Container>
   )
 }
 
