@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
 import Home from './pages/home';
 import Project from './pages/project';
@@ -11,7 +11,6 @@ import { loadProjects } from './api';
 const Router = createBrowserRouter([
     {
         element: <Layout />,
-        path: '/',
         children: [
             {
                 path: "/",
@@ -27,15 +26,12 @@ const Router = createBrowserRouter([
                 element: <About />,
             }
             
-        ]
+        ],
+        errorElement: <NotFound />
     },
     {
         path: "not-found",
         element: <NotFound />,
-    },
-    {
-        path: "*",
-        loader: () => redirect("/not-found")
     }
 ]);
 
