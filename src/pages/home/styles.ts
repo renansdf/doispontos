@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Asset } from 'contentful';
 
 export const Container = styled.main`
   scroll-snap-type: y mandatory;
@@ -6,23 +7,27 @@ export const Container = styled.main`
   overflow-y: scroll;
 `;
 
-interface IProject{
-  bgUrl: string;
+interface IFrameProps {
+  frameStep: boolean;
+  animationFrames: Asset[];
 }
 
-export const Project = styled.section<IProject>`
+export const Project = styled.section<IFrameProps>`
   scroll-snap-align: start;
 
   width: 100%;
   height: 100vh;
-  background: grey;
-
-  ${props => props.bgUrl && css`
-    background-image: url(${props.bgUrl});
-  `}
-
   background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
+
+  ${props => props.animationFrames && css`
+    background-image: url(${props.animationFrames[0].fields.file.url});
+  `}
+
+  ${props => props.frameStep === false && css`
+    background-image: url(${props.animationFrames[1].fields.file.url});
+  `}
 
   a{
     width: 100%;
@@ -33,7 +38,6 @@ export const Project = styled.section<IProject>`
     justify-content: center;
   }
 `;
-
 
 export const LinkText = styled.span`
   background: #303030;
