@@ -11,6 +11,7 @@ import { loadProjects } from './api';
 const Router = createBrowserRouter([
     {
         element: <Layout />,
+        path: '/',
         children: [
             {
                 path: "/",
