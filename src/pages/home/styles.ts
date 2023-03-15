@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Asset } from 'contentful';
+import { type Asset } from 'contentful';
 
 export const Container = styled.main`
   scroll-snap-type: y mandatory;
@@ -21,11 +21,11 @@ export const Project = styled.section<IFrameProps>`
   background-position: center;
   background-repeat: no-repeat;
 
-  ${props => props.animationFrames && css`
+  ${props => css`
     background-image: url(${props.animationFrames[0].fields.file.url});
   `}
 
-  ${props => props.frameStep === false && css`
+  ${props => !props.frameStep && css`
     background-image: url(${props.animationFrames[1].fields.file.url});
   `}
 

@@ -6,7 +6,7 @@ import About from './pages/about';
 import NotFound from './pages/notfound';
 import Layout from './components/Layout';
 
-import { loadProjects } from './api';
+import { loadProjects } from './utils/Api';
 
 const Router = createBrowserRouter([
     {

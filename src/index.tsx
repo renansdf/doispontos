@@ -1,13 +1,10 @@
 import { createRoot } from 'react-dom/client';
 
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root')
 
-if (rootElement){
+if (rootElement != null){
   const root = createRoot(rootElement);
   root.render(<App />);
 }
-
-reportWebVitals();

@@ -12,13 +12,13 @@ const Header: React.FC = () => {
         <h1>Dois Pontos</h1>
       </Link>
 
-      <MenuButton onClick={() => setVisibility(!visibility)}>Menu</MenuButton>
+      <MenuButton onClick={() => { setVisibility(!visibility) }}>Menu</MenuButton>
 
       <MenuContainer isVisible={visibility}>
         <Link to="/">Principal</Link>
         <Link to="/sobre">Sobre</Link>
         <Link to="/contato">Contato</Link>
-        <MenuButton onClick={() => setVisibility(!visibility)}>Close</MenuButton>
+        <MenuButton onClick={() => { setVisibility(!visibility) }}>Close</MenuButton>
       </MenuContainer>
     </Container>
   )
