@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, MenuButton, MenuContainer } from './styles';
+import { Container, CloseMenuButton, HamburguerMenuButton, MenuOverlay } from './styles';
 
 const Header: React.FC = () => {
   const [visibility, setVisibility] = useState(false)
@@ -12,14 +12,18 @@ const Header: React.FC = () => {
         <h1>Dois Pontos</h1>
       </Link>
 
-      <MenuButton onClick={() => { setVisibility(!visibility) }}>Menu</MenuButton>
+      <HamburguerMenuButton onClick={() => { setVisibility(!visibility) }}>
+        <span className="material-symbols-outlined">menu</span>
+      </HamburguerMenuButton>
 
-      <MenuContainer isVisible={visibility}>
-        <Link to="/">Principal</Link>
+      <MenuOverlay isVisible={visibility}>
+        <Link to="/">Home</Link>
         <Link to="/sobre">Sobre</Link>
         <Link to="/contato">Contato</Link>
-        <MenuButton onClick={() => { setVisibility(!visibility) }}>Close</MenuButton>
-      </MenuContainer>
+        <CloseMenuButton onClick={() => { setVisibility(!visibility) }}>
+          <span className="material-symbols-outlined">close</span>
+        </CloseMenuButton>
+      </MenuOverlay>
     </Container>
   )
 }
