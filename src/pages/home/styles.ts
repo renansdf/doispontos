@@ -3,7 +3,7 @@ import { type Asset } from 'contentful';
 
 export const Container = styled.main`
   scroll-snap-type: y mandatory;
-  max-height: 88vh;
+  max-height: 100vh;
   overflow-y: scroll;
 `;
 
