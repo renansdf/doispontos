@@ -19,4 +19,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const defaultValues = {
+  padding: '60px'
+}
+
 export default GlobalStyle;
