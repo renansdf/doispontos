@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { type IProject, loadProject, navigateToNotFound } from '../../utils/Api';
 
-import { Container, Title, Image } from './styles';
+import { ProjectsContainer, Title, Image } from './styles';
 
 const Project: React.FC = () => {
   const params = useParams();
@@ -21,7 +21,7 @@ const Project: React.FC = () => {
   }, [load]);
 
   return (
-    <Container itemsAmount={2}>
+    <ProjectsContainer itemsAmount={2}>
       <Title position={1}>{project?.fields.title}</Title>
       {project?.fields.animations.map((obj, index) => (
         <Image 
@@ -31,7 +31,7 @@ const Project: React.FC = () => {
           position={index+2}
         />
       ))}
-    </Container>
+    </ProjectsContainer>
   )
 }
 
