@@ -17,9 +17,9 @@ const Header: React.FC = () => {
       </HamburguerMenuButton>
 
       <MenuOverlay isVisible={visibility}>
-        <Link to="/">Home</Link>
-        <Link to="/sobre">Sobre</Link>
-        <Link to="/contato">Contato</Link>
+        <Link to="/" onClick={() => { setVisibility(!visibility) }}>Home</Link>
+        <Link to="/sobre" onClick={() => { setVisibility(!visibility) }}>Sobre</Link>
+        <Link to="/contato" onClick={() => { setVisibility(!visibility) }}>Contato</Link>
         <CloseMenuButton onClick={() => { setVisibility(!visibility) }}>
           <span className="material-symbols-outlined">close</span>
         </CloseMenuButton>
