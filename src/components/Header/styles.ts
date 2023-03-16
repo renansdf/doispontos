@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { defaultValues } from '../../globalStyles';
+
 export const Container = styled.nav`
   position: fixed;
   z-index: 9;
@@ -9,7 +11,7 @@ export const Container = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 60px;
+  padding: 0 ${defaultValues.padding};
   position: fixed;
   top: 0;
   left: 0;

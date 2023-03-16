@@ -1,20 +1,21 @@
 import styled, { css } from 'styled-components';
 
+import { defaultValues } from '../../globalStyles';
+
 interface IContainerProps{
   itemsAmount: number;
 }
 
-export const Container = styled.main<IContainerProps>`
+export const ProjectsContainer = styled.div<IContainerProps>`
   display: grid;
-  grid-template-columns: 10% 1fr 5% 1fr 10%;
-  grid-template-rows: 80px 80px repeat(calc(${props=>props.itemsAmount}*2 + 2), 200px);
+  grid-template-columns: ${defaultValues.padding} 1fr 5% 1fr ${defaultValues.padding};
+  grid-template-rows: 120px repeat(calc(${props=>props.itemsAmount}*2 + 1), 200px);
 
   * {
     max-width: 100%;
     max-height: 100%;
   }
-
-`;
+`
 
 interface IGridItem{
   position: number;
@@ -23,7 +24,7 @@ interface IGridItem{
 export const Title = styled.h2<IGridItem>`
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
-`;
+`
 
 export const Image = styled.img<IGridItem>`
   ${props => (props.position % 2 === 0 ? 
@@ -37,4 +38,4 @@ export const Image = styled.img<IGridItem>`
     grid-column: 2 / span 1;
     grid-row: calc(1 + ${Math.floor(props.position/2)}*4) / span 3;
   `)}
-`;
+`
