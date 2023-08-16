@@ -2,9 +2,10 @@ import styled, { css } from 'styled-components';
 import { type Asset } from 'contentful';
 
 export const Container = styled.main`
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   max-height: 100vh;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 `;
 
 interface IFrameProps {
@@ -13,7 +14,7 @@ interface IFrameProps {
 }
 
 export const Project = styled.section<IFrameProps>`
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 
   width: 100%;
   height: 100vh;
