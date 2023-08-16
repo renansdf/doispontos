@@ -3,6 +3,7 @@ import { redirect } from 'react-router-dom'
 
 export interface IProjectFields {
   animations: Asset[];
+  coverFrames: Asset[];
   description: unknown; // this is rich text
   makingof: Asset[];
   title: string;
