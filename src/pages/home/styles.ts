@@ -40,15 +40,22 @@ export const Project = styled.section<IFrameProps>`
   }
 `;
 
-export const LinkText = styled.span`
-  background: #303030;
-  color: #fff;
-  padding: 100px 20px;
-  font-size: 1.3em;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-weight: 300;
-  max-width: 200px;
+interface ILinkTextProps {
+  hexColor: string;
+}
+
+export const LinkText = styled.span<ILinkTextProps>`
+  color: #266bd9;
+
+  ${props => css`
+    color: ${props.hexColor};
+  `}
+
+  font-size: 7em;
+  letter-spacing: .05em;
+  font-weight: 700;
+  max-width: 50%;
+  text-align: center;
 
   opacity: 0;
   transition: opacity .3s;

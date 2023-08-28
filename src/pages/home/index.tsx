@@ -8,6 +8,7 @@ const Home: React.FC = () => {
   const loadedProjects = useLoaderData() as IProject[]
   const [projects, setProjects] = useState<IProject[]>([] as IProject[])
   const [frameToggle, setFrameToggle] = useState(true)
+  const [currentInterval, setCurrentInterval] = useState<NodeJS.Timeout>()
 
   useEffect(() => {
     const projectsList: IProject[] = []
@@ -17,20 +18,24 @@ const Home: React.FC = () => {
     setProjects(projectsList)
   }, [])
 
-  useEffect(() => {
+  const handleStartAnimation = (): void => {
+    setFrameToggle((toggleState) => !toggleState)
     const togglerInterval = setInterval(() => {
       setFrameToggle((toggleState) => !toggleState)
     }, 500)
+    setCurrentInterval(togglerInterval)
+  }
 
-    return () => { clearInterval(togglerInterval) }
-  }, [])
+  const handleStopAnimation = (): void => {
+    clearInterval(currentInterval)
+  }
   
   return (
     <Container>
       {projects?.map(project => (
         <Project key={project.sys.id} frameStep={frameToggle} animationFrames={project.fields.coverFrames}>
           <Link to={`/projeto/${project.sys.id}`}>
-            <LinkText>
+            <LinkText onMouseEnter={handleStartAnimation} onMouseLeave={handleStopAnimation} hexColor={project.fields.color.value}>
               {project.fields.title}
             </LinkText>
           </Link>
