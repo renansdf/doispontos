@@ -3,6 +3,10 @@ import { redirect } from 'react-router-dom'
 
 export interface IProjectFields {
   animations: Asset[];
+  cover: Asset;
+  color: {
+    value: string;
+  };
   coverFrames: Asset[];
   description: unknown; // this is rich text
   makingof: Asset[];
@@ -14,6 +18,10 @@ export interface IProject {
   sys: {
     id: string;
   }
+}
+
+interface IHomeProjects {
+  projectsList: IProject[]
 }
 
 const createContentfulClient = (): ContentfulClientApi => {
@@ -30,10 +38,10 @@ const createContentfulClient = (): ContentfulClientApi => {
 
 export const navigateToNotFound = (): Response => redirect('/not-found')
 
-export const loadProjects = async (): Promise<Array<Entry<IProjectFields>>> => {
+export const loadProjects = async (): Promise<IProject[]> => {
     const client = createContentfulClient()
-    const response = await client.getEntries<IProjectFields>()
-    return response.items
+    const homeProjects = await client.getEntry<IHomeProjects>('4GYvVZ6EVrbvY8b7fYG5re')
+    return homeProjects.fields.projectsList
 }
 
 export const loadProject = async (id: string): Promise<Entry<IProjectFields>> => {
