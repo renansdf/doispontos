@@ -81,7 +81,7 @@ export const MenuOverlay = styled.div<IContainerProps>`
     color: #000;
 
     &:hover{
-      letter-spacing:10px;
+      letter-spacing: 10px;
     }
   }
 
@@ -94,4 +94,14 @@ export const MenuOverlay = styled.div<IContainerProps>`
 
     a{ transform: translateX(0) }
   `}
+
+  img{
+    width: 80%;
+    max-width: 850px;
+    transition: transform .3s;
+
+    &:hover{
+      transform: scale(1.02);
+    }
+  }
 `
