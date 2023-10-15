@@ -28,13 +28,19 @@ export const Container = styled.nav`
 
 export const HamburguerMenuButton = styled.button`
   background: transparent;
-  border: 1px solid black;
+  border: none;
   padding: 5px;
-  border-radius: 5px;
   cursor: pointer;
 
   span {
     display: block;
+    width: 30px;
+    height: 10px;
+    background-color: #000;
+
+    & + span{
+      margin-top: 3px;
+    }
   }
 `
 
@@ -74,15 +80,6 @@ export const MenuOverlay = styled.div<IContainerProps>`
   
   a {
     transform: translateX(25vw);
-    font-size: 80px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    color: #000;
-
-    &:hover{
-      letter-spacing: 10px;
-    }
   }
 
   a:nth-child(1){ transition: transform .8s ease-in-out, letter-spacing .3s; }
@@ -97,7 +94,7 @@ export const MenuOverlay = styled.div<IContainerProps>`
 
   img{
     width: 80%;
-    max-width: 850px;
+    max-width: 550px;
     transition: transform .3s;
 
     &:hover{

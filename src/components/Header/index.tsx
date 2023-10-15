@@ -17,7 +17,9 @@ const Header: React.FC = () => {
       </Link>
 
       <HamburguerMenuButton onClick={() => { setVisibility(!visibility) }}>
-        <span className="material-symbols-outlined">menu</span>
+        <span />
+        <span />
+        <span />
       </HamburguerMenuButton>
 
       <MenuOverlay isVisible={visibility}>
