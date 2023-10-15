@@ -10,6 +10,7 @@ export interface IProjectFields {
   coverFrames: Asset[];
   description: unknown; // this is rich text
   makingof: Asset[];
+  mainMovie: string;
   title: string;
 }
 

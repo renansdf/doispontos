@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import YouTube from 'react-youtube';
 
 import { type IProject, loadProject } from '../../utils/Api';
 
-import { ProjectsContainer, Title, Image } from './styles';
+import { Container, ProjectCotent, Cover, CoverAnimation, Title, Image } from './styles';
 
 const Project: React.FC = () => {
   const navigate = useNavigate()
   const params = useParams()
   const [project, setProject] = useState<IProject>()
+  const [frameToggle, setFrameToggle] = useState(true)
 
   const load = useCallback(async () => {
     if(params.projectid != null){
@@ -21,26 +23,35 @@ const Project: React.FC = () => {
     load().catch(() => {navigate('/not-found')})
   }, [load]);
 
+  useEffect(() => {
+    const toggleBackground = setInterval(() => {
+      setFrameToggle((toggleState) => !toggleState)
+    }, 500)
+
+    return () => {
+      clearInterval(toggleBackground)
+    }
+  }, []);
+
+  if(project === null || project === undefined) return (<></>)
+
   return (
-    <ProjectsContainer itemsAmount={2}>
-      <Title position={1}>{project?.fields.title}</Title>
-      {project?.fields.coverFrames?.map((obj, index) => (
-        <Image 
-          key={obj.fields.file.url} 
-          src={obj.fields.file.url} 
-          alt={obj.fields.file.url} 
-          position={index+2}
-        />
-      ))}
-      {project?.fields.animations?.map((obj, index) => (
-        <Image 
-          key={obj.fields.file.url} 
-          src={obj.fields.file.url} 
-          alt={obj.fields.file.url} 
-          position={index+2}
-        />
-      ))}
-    </ProjectsContainer>
+    <Container>
+      <Cover bgUrl={project.fields.cover.fields.file.url ?? ""}>
+        <Title hexColor={project.fields.color.value ?? "#000"}>{project.fields.title}</Title>
+      </Cover>
+      <ProjectCotent>
+        <YouTube videoId={project.fields.mainMovie} />
+        <CoverAnimation frames={project.fields.coverFrames} frameToggle={frameToggle} />
+        {project.fields.makingof?.map((asset) => (
+          <Image
+            key={asset.fields.file.url}
+            src={asset.fields.file.url}
+            alt={asset.fields.file.fileName}
+          />
+        ))}
+      </ProjectCotent>
+    </Container>
   )
 }
 
