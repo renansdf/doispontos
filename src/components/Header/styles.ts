@@ -32,15 +32,13 @@ export const HamburguerMenuButton = styled.button`
   padding: 5px;
   cursor: pointer;
 
-  span {
-    display: block;
-    width: 30px;
-    height: 10px;
-    background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    & + span{
-      margin-top: 3px;
-    }
+  img:first-child{
+    margin-bottom: 2.4px;
   }
 `
 
@@ -53,7 +51,8 @@ export const CloseMenuButton = styled.button`
   border: none;
   cursor: pointer;
 
-  span{
+  img{
+    max-width: 40px;
     display: block;
   }
 `
@@ -92,7 +91,7 @@ export const MenuOverlay = styled.div<IContainerProps>`
     a{ transform: translateX(0) }
   `}
 
-  img{
+  a img{
     width: 80%;
     max-width: 550px;
     transition: transform .3s;
@@ -101,4 +100,9 @@ export const MenuOverlay = styled.div<IContainerProps>`
       transform: scale(1.02);
     }
   }
+`
+
+export const MenuBurger = styled.img`
+  width: 40px;
+  height: auto;
 `
