@@ -58,7 +58,8 @@ export const CoverAnimation = styled.article<ICoverFrames>`
 `
 
 export const Image = styled.img`
-  max-width: 450px;
-  max-height: 300px;
-  width: 100%;
+  max-width: 600px;
+  max-height: 600px;
+  width: auto;
+  height: auto;
 `
