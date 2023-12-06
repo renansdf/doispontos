@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Header from '../Header'
+import Footer from '../Footer'
 import { Wrapper, Content } from './styles'
 
 const Layout: React.FC = () => {
@@ -11,6 +12,7 @@ const Layout: React.FC = () => {
             <Content>
                 <Outlet />
             </Content>
+            <Footer />
         </Wrapper>
     )
 }
