@@ -25,6 +25,20 @@ interface IHomeProjects {
   projectsList: IProject[]
 }
 
+interface IBiografia {
+  fields: {
+    description: string;
+  }
+}
+
+export interface IAboutPage {
+  fields: {
+    title: string;
+    manifesto: string;
+    biografias: IBiografia[];
+  }
+}
+
 const createContentfulClient = (): ContentfulClientApi => {
   const space: string | undefined = process.env.REACT_APP_CONTENTFUL_SPACE_ID
   const accessToken: string | undefined = process.env.REACT_APP_CONTENTFUL_PRODUCTION_TOKEN
@@ -37,15 +51,19 @@ const createContentfulClient = (): ContentfulClientApi => {
   return createClient({ space, accessToken })
 }
 
+const client = createContentfulClient()
+
 export const navigateToNotFound = (): Response => redirect('/not-found')
 
 export const loadProjects = async (): Promise<IProject[]> => {
-    const client = createContentfulClient()
     const homeProjects = await client.getEntry<IHomeProjects>('4GYvVZ6EVrbvY8b7fYG5re')
     return homeProjects.fields.projectsList
 }
 
 export const loadProject = async (id: string): Promise<Entry<IProjectFields>> => {
-  const client = createContentfulClient()
   return await client.getEntry<IProjectFields>(id)
+}
+
+export const loadAboutPage = async (): Promise<Entry<IAboutPage>> => {
+  return await client.getEntry<IAboutPage>('6D3G1jtrCIof321yvk1XpU')
 }

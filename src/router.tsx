@@ -6,7 +6,7 @@ import About from './pages/about';
 import NotFound from './pages/notfound';
 import Layout from './components/Layout';
 
-import { loadProjects } from './utils/Api';
+import { loadProjects, loadAboutPage } from './utils/Api';
 
 const Router = createBrowserRouter([
     {
@@ -24,6 +24,7 @@ const Router = createBrowserRouter([
             {
                 path: "sobre",
                 element: <About />,
+                loader: loadAboutPage,
             }
             
         ],
