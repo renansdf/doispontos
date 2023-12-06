@@ -37,6 +37,12 @@ export const Project = styled.section<IFrameProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: none;
+    transition: all .7s;
+
+    ${props => props.frameStep && css`
+      background-color: rgba(255,255,255,.7);
+    `}
   }
 `;
 
@@ -51,14 +57,13 @@ export const LinkText = styled.span<ILinkTextProps>`
     color: ${props.hexColor};
   `}
 
-  font-size: 7em;
-  letter-spacing: .05em;
-  font-weight: 700;
+  font-size: 4em;
+  font-weight: 400;
   max-width: 50%;
   text-align: center;
 
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity .7s;
 
   &:hover{
     opacity: 1;
