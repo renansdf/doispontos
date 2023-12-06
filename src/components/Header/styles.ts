@@ -20,9 +20,8 @@ export const Container = styled.nav`
 
   h1{
     font-size: 2em;
-    font-weight: 300;
-    text-transform: uppercase;
-    color: #707070;
+    font-weight: 500;
+    color: #000;
   }
 `;
 
