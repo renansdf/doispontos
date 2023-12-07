@@ -41,7 +41,7 @@ export const Project = styled.section<IFrameProps>`
     transition: all .7s;
 
     ${props => props.frameStep && css`
-      background-color: rgba(255,255,255,.7);
+      background-color: rgba(255,255,255,.85);
     `}
   }
 `;

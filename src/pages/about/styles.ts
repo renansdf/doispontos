@@ -5,6 +5,7 @@ export const Container = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 90px 0px;
 
     h1, h2{
         font-size: 32px;

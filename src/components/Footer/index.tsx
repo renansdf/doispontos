@@ -15,7 +15,6 @@ const Footer: React.FC = () => {
 
       <FooterColumn>
         <img src={PASSARO} />
-        <h3>contato</h3>
         <a href="mailto:contato@estudio2pontos.com">contato@estudio2pontos.com</a>
         <a href="tel:+55 21 999 920 032">+55 21 999 920 032</a>
         <a href="tel:+55 21 999 561 064">+55 21 999 561 064</a>

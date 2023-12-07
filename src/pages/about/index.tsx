@@ -7,7 +7,6 @@ import { Container, Headings, Biographies } from './styles'
 
 const About: React.FC = () => {
     const aboutPage = useLoaderData() as IAboutPage
-    console.log(aboutPage)
 
     return (
         <Container>
