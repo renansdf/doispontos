@@ -68,4 +68,12 @@ export const LinkText = styled.span<ILinkTextProps>`
   &:hover{
     opacity: 1;
   }
+
+  @media(max-width: 580px){
+    max-width: 90%;
+  }
+
+  @media(max-width: 480px){
+    font-size: 42px;
+  }
 `;

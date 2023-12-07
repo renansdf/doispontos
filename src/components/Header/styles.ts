@@ -99,6 +99,12 @@ export const MenuOverlay = styled.div<IContainerProps>`
       transform: scale(1.02);
     }
   }
+
+  @media(max-width: 500px){
+    a img{
+      width: 180px;
+    }
+  }
 `
 
 export const MenuBurger = styled.img`

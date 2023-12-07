@@ -23,6 +23,8 @@ const Home: React.FC = () => {
         <Project key={project.sys.id} frameStep={frameToggle} animationFrames={project.fields.coverFrames}>
           <Link to={`/projeto/${project.sys.id}`}>
             <LinkText 
+              onTouchStart={() => {setFrameToggle(!frameToggle)}}
+              onTouchEnd={() => {setFrameToggle(!frameToggle)}}
               onMouseEnter={() => {setFrameToggle(!frameToggle)}} 
               onMouseLeave={() => {setFrameToggle(!frameToggle)}} 
               hexColor={project.fields.color.value}
