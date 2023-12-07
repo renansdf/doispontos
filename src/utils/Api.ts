@@ -8,6 +8,7 @@ export interface IProjectFields {
     value: string;
   };
   coverFrames: Asset[];
+  capaAnimadaMobile?: Asset[];
   description: unknown; // this is rich text
   makingof: Asset[];
   mainMovie: string;

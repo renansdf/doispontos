@@ -15,12 +15,19 @@ const Home: React.FC = () => {
       if(project.fields.coverFrames != null) projectsList.push(project)
     })
     setProjects(projectsList)
-  }, [])
+    console.log(loadedProjects)
+  }, [loadedProjects])
   
   return (
     <Container>
       {projects?.map(project => (
-        <Project key={project.sys.id} frameStep={frameToggle} animationFrames={project.fields.coverFrames}>
+        <Project 
+          key={project.sys.id} 
+          frameStep={frameToggle} 
+          animationFrames={{
+            desktop: project.fields.coverFrames, 
+            mobile: project.fields?.capaAnimadaMobile ?? undefined
+          }}>
           <Link to={`/projeto/${project.sys.id}`}>
             <LinkText 
               onTouchStart={() => {setFrameToggle(!frameToggle)}}

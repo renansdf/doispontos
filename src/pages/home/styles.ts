@@ -10,7 +10,10 @@ export const Container = styled.main`
 
 interface IFrameProps {
   frameStep: boolean;
-  animationFrames: Asset[];
+  animationFrames: {
+    desktop: Asset[];
+    mobile?: Asset[];
+  };
 }
 
 export const Project = styled.section<IFrameProps>`
@@ -23,11 +26,11 @@ export const Project = styled.section<IFrameProps>`
   background-repeat: no-repeat;
 
   ${props => css`
-    background-image: url(${props.animationFrames[0].fields.file.url});
+    background-image: url(${props.animationFrames.desktop[0].fields.file.url});
   `}
 
   ${props => !props.frameStep && css`
-    background-image: url(${props.animationFrames[1].fields.file.url});
+    background-image: url(${props.animationFrames.desktop[1].fields.file.url});
   `}
 
   a{
@@ -45,6 +48,16 @@ export const Project = styled.section<IFrameProps>`
       span{
         opacity: 1;
       }
+    `}
+  }
+
+  @media(max-width: 900px) {
+    ${props => props.animationFrames.mobile !== undefined && css`
+      background-image: url(${props.animationFrames.mobile[0].fields.file.url});
+    `}
+
+    ${props => props.animationFrames.mobile !== undefined && !props.frameStep && css`
+      background-image: url(${props.animationFrames.mobile[1].fields.file.url});
     `}
   }
 `;
