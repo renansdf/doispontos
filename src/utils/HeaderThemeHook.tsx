@@ -16,7 +16,7 @@ const HeaderContext = createContext<IHeaderContext>({} as IHeaderContext);
 const HeaderProvider: FC<ReactNode> = ({ children }) => {
   const [state, setState] = useState<IHeaderStates>({
     showBackground: false,
-    menuColor: '#000',
+    menuColor: '',
   });
 
   const switchState = useCallback((newState: IHeaderStates) => {

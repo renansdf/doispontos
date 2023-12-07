@@ -34,9 +34,9 @@ const Project: React.FC = () => {
   
   return (
     <Container>
-      <Cover bgUrl={project.fields.cover.fields.file.url ?? ""} />
+      <Cover bgUrl={project.fields.cover.fields.file.url ?? ''} />
       <ProjectCotent>
-        <Title hexColor={project.fields.color.value ?? "#000"}>{project.fields.title}</Title>
+        <Title>{project.fields.title}</Title>
         <Description>
           <Markdown>{project.fields.projectDescription}</Markdown>
         </Description>

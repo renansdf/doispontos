@@ -33,6 +33,12 @@ export const Container = styled.nav<{menuColor: string, showBackground: boolean}
       color: ${props.menuColor};
     }
   `}
+
+  @media(max-width: 380px){
+    h1{
+      font-size: 21px;
+    }
+  }
 `;
 
 export const HamburguerMenuButton = styled.button`
@@ -52,6 +58,12 @@ export const HamburguerMenuButton = styled.button`
 
   div + div{
     margin-top: 6px;
+  }
+
+  @media(max-width: 380px){
+    div + div {
+      margin-top: 4px;
+    }
   }
 `
 
@@ -133,6 +145,10 @@ export const SimpleBurguer = styled.div<{bgColor: string}>`
   background-color: #000;
 
   ${props => props.bgColor !== '' && css`
-    background-color: ${props.bgColor}
+    background-color: ${props.bgColor};
   `}
+
+  @media(max-width: 380px){
+    width: 30px;
+  }
 `

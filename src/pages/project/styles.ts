@@ -30,7 +30,7 @@ export const ProjectCotent = styled.section`
   gap: 40px;
 `
 
-export const Title = styled.h2<{ hexColor: string }>`
+export const Title = styled.h2`
   font-size: 42px;
   font-weight: 400;
   color: #000;
