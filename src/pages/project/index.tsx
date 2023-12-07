@@ -1,16 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import YouTube from 'react-youtube';
+import Markdown from 'react-markdown'
 
 import { type IProject, loadProject } from '../../utils/Api';
+import { useHeader } from '../../utils/HeaderThemeHook';
 
-import { Container, ProjectCotent, Cover, CoverAnimation, Title, Image } from './styles';
+import { Container, ProjectCotent, Cover, Title, Description, VideoWrapper, Image } from './styles';
 
 const Project: React.FC = () => {
   const navigate = useNavigate()
   const params = useParams()
   const [project, setProject] = useState<IProject>()
-  const [frameToggle, setFrameToggle] = useState(true)
 
   const load = useCallback(async () => {
     if(params.projectid != null){
@@ -18,31 +19,30 @@ const Project: React.FC = () => {
       setProject(loadedProject)
     }
   },[params.projectid])
-
+  
   useEffect(() => {
     load().catch(() => {navigate('/not-found')})
   }, [load]);
 
-  useEffect(() => {
-    const toggleBackground = setInterval(() => {
-      setFrameToggle((toggleState) => !toggleState)
-    }, 500)
+  const { switchState } = useHeader()
 
-    return () => {
-      clearInterval(toggleBackground)
-    }
-  }, []);
+  useEffect(() => {
+      switchState({ menuColor: project?.fields.corDoMenu?.value ?? '', showBackground: false })
+  }, [project])
 
   if(project === null || project === undefined) return (<></>)
-
+  
   return (
     <Container>
-      <Cover bgUrl={project.fields.cover.fields.file.url ?? ""}>
-        <Title hexColor={project.fields.color.value ?? "#000"}>{project.fields.title}</Title>
-      </Cover>
+      <Cover bgUrl={project.fields.cover.fields.file.url ?? ""} />
       <ProjectCotent>
-        <YouTube videoId={project.fields.mainMovie} />
-        <CoverAnimation frames={project.fields.coverFrames} frameToggle={frameToggle} />
+        <Title hexColor={project.fields.color.value ?? "#000"}>{project.fields.title}</Title>
+        <Description>
+          <Markdown>{project.fields.projectDescription}</Markdown>
+        </Description>
+        <VideoWrapper>
+          <YouTube videoId={project.fields.mainMovie} />
+        </VideoWrapper>
         {project.fields.makingof?.map((asset) => (
           <Image
             key={asset.fields.file.url}

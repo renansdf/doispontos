@@ -7,9 +7,12 @@ export interface IProjectFields {
   color: {
     value: string;
   };
+  corDoMenu?: {
+    value: string;
+  };
   coverFrames: Asset[];
   capaAnimadaMobile?: Asset[];
-  description: unknown; // this is rich text
+  projectDescription: string;
   makingof: Asset[];
   mainMovie: string;
   title: string;

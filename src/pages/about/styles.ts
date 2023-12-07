@@ -16,16 +16,6 @@ export const Container = styled.section`
         font-size: 16px;
     }
 
-    &::before{
-        content: '';
-        width: 100%;
-        height: 80px;
-        background-color: #fff;
-        position: fixed;
-        bottom: auto;
-        top: 0;
-    }
-
     @media(max-width: 550px){
         padding: 140px ${defaultValues.padding} 40px;
     }
@@ -51,7 +41,7 @@ export const Headings = styled.div`
         padding: 0px 0px 40px;
 
         h2{
-            font-size: 25px;
+            font-size: 28px;
         }
 
         h2 + h2 {

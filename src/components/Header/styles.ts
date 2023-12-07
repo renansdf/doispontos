@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { defaultValues } from '../../globalStyles';
 
-export const Container = styled.nav`
+export const Container = styled.nav<{menuColor: string, showBackground: boolean}>`
   position: fixed;
   z-index: 9;
   background: transparent;
@@ -23,6 +23,16 @@ export const Container = styled.nav`
     font-weight: 500;
     color: #000;
   }
+
+  ${props => props.showBackground && css`
+    background-color: #fff;
+  `}
+
+  ${props => props.menuColor !== '' && css`
+    h1{
+      color: ${props.menuColor};
+    }
+  `}
 `;
 
 export const HamburguerMenuButton = styled.button`
@@ -38,6 +48,10 @@ export const HamburguerMenuButton = styled.button`
 
   img:first-child{
     margin-bottom: 2.4px;
+  }
+
+  div + div{
+    margin-top: 6px;
   }
 `
 
@@ -110,4 +124,15 @@ export const MenuOverlay = styled.div<IContainerProps>`
 export const MenuBurger = styled.img`
   width: 40px;
   height: auto;
+`
+
+export const SimpleBurguer = styled.div<{bgColor: string}>`
+  width: 50px;
+  height: 4px;
+
+  background-color: #000;
+
+  ${props => props.bgColor !== '' && css`
+    background-color: ${props.bgColor}
+  `}
 `

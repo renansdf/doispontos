@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 
+import { useHeader } from '../../utils/HeaderThemeHook'
 import { type IProject } from '../../utils/Api'
 import { Container, Project, LinkText } from './styles'
 
@@ -15,8 +16,13 @@ const Home: React.FC = () => {
       if(project.fields.coverFrames != null) projectsList.push(project)
     })
     setProjects(projectsList)
-    console.log(loadedProjects)
   }, [loadedProjects])
+
+  const { switchState } = useHeader()
+
+  useEffect(() => {
+      switchState({ menuColor: '', showBackground: false })
+  }, [])
   
   return (
     <Container>

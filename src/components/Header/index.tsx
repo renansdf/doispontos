@@ -9,21 +9,37 @@ import FaixaContato from '../../images/faixa_contato.png';
 import FaixaHome from '../../images/faixa_home.png';
 import FaixaProjetos from '../../images/faixa_projetos.png';
 import BotaoFechar from '../../images/botao_fechar.png';
-import { Container, CloseMenuButton, HamburguerMenuButton, MenuOverlay, MenuBurger } from './styles';
+import { Container, CloseMenuButton, HamburguerMenuButton, MenuOverlay, MenuBurger, SimpleBurguer } from './styles';
+import { useHeader } from '../../utils/HeaderThemeHook';
 
 const Header: React.FC = () => {
   const [visibility, setVisibility] = useState(false)
 
+  const { state } = useHeader();
+
   return(
-    <Container>
+    <Container 
+      showBackground={state.showBackground}
+      menuColor={state.menuColor}
+    >
       <Link to="/">
         <h1>Dois Pontos</h1>
       </Link>
 
       <HamburguerMenuButton onClick={() => { setVisibility(!visibility) }}>
-        <MenuBurger src={FaixaContato} />
-        <MenuBurger src={FaixaHome} />
-        <MenuBurger src={FaixaProjetos} />
+        {state.menuColor === '' ? (
+          <>
+            <MenuBurger src={FaixaContato} />
+            <MenuBurger src={FaixaHome} />
+            <MenuBurger src={FaixaProjetos} />
+          </>
+        ) : (
+          <>
+            <SimpleBurguer bgColor={state.menuColor} />
+            <SimpleBurguer bgColor={state.menuColor} />
+            <SimpleBurguer bgColor={state.menuColor} />
+          </>
+        )}
       </HamburguerMenuButton>
 
       <MenuOverlay isVisible={visibility}>

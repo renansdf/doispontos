@@ -1,10 +1,5 @@
-import styled, { css } from 'styled-components';
-import { type Asset } from 'contentful';
-
-interface ICoverFrames {
-  frames: Asset[];
-  frameToggle: boolean;
-}
+import styled from 'styled-components';
+import { defaultValues } from '../../globalStyles';
 
 export const Container = styled.main`
   width: 100%;
@@ -14,7 +9,7 @@ export const Container = styled.main`
 
 export const Cover = styled.section<{ bgUrl: string }>`
   width: 100%;
-  height: 62vh;
+  height: 50vh;
 
   background-image: url(${props => props.bgUrl});
   background-size: cover;
@@ -25,41 +20,55 @@ export const Cover = styled.section<{ bgUrl: string }>`
   justify-content: center;
 `
 
-export const Title = styled.h2<{ hexColor: string }>`
-  font-size: 4vw;
-  padding: 20px 45px 19px;
-  background-color: rgba(255,255,255,1);
-  box-shadow: 0 0 20px #fff;
-  border-radius: 50px;
-
-  color: ${props => props.hexColor};
-`
-
 export const ProjectCotent = styled.section`
-  display: flex;
-  padding: 60px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 40px ${defaultValues.padding};
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
 `
 
-export const CoverAnimation = styled.article<ICoverFrames>`
-  width: 100%;
-  max-width: 850px;
-  height: 500px;
-  background-size: cover;
+export const Title = styled.h2<{ hexColor: string }>`
+  font-size: 42px;
+  font-weight: 400;
+  color: #000;
+  align-self: start;
+  justify-self: start;
+  grid-column-start: span 2;
 
-  background-image: url(${props => props.frames[0].fields.file.url});
+  @media(max-width: 900px){
+    grid-column-start: span 6;
+  }
+`
+export const Description = styled.article`
+  font-size: 21px;
+  grid-column-start: span 4;
 
-  ${props => props.frameToggle && css`
-    background-image: url(${props.frames[1].fields.file.url});
-  `}
+  @media(max-width: 900px){
+    grid-column-start: span 6;
+  }
+
+  @media(max-width: 500px){
+    font-size: 16px;
+  }
+`
+
+export const VideoWrapper = styled.div`
+  grid-column-start: span 6;
+
+  div, div iframe{
+    width: 100%;
+  }
 `
 
 export const Image = styled.img`
-  max-width: 600px;
-  max-height: 600px;
-  width: auto;
+  max-width: 100%;
   height: auto;
+  grid-column-start: span 3;
+
+  @media(max-width: 650px){
+    grid-column-start: span 6;
+  }
 `
