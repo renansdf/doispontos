@@ -42,6 +42,9 @@ export const Project = styled.section<IFrameProps>`
 
     ${props => props.frameStep && css`
       background-color: rgba(255,255,255,.85);
+      span{
+        opacity: 1;
+      }
     `}
   }
 `;
@@ -64,10 +67,6 @@ export const LinkText = styled.span<ILinkTextProps>`
 
   opacity: 0;
   transition: opacity .7s;
-
-  &:hover{
-    opacity: 1;
-  }
 
   @media(max-width: 580px){
     max-width: 90%;
