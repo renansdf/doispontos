@@ -1,10 +1,11 @@
 import styled from 'styled-components'
+import { defaultValues } from '../../globalStyles';
 
 export const Container = styled.footer`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 30px 10%;
+  padding: 30px ${defaultValues.padding};
   flex-wrap: wrap;
 `;
 
