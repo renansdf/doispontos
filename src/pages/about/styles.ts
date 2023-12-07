@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import { defaultValues } from '../../globalStyles'
 
 export const Container = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 90px 0px;
+    padding: 180px ${defaultValues.padding} 90px;
 
     h1, h2{
         font-size: 32px;
@@ -14,12 +15,26 @@ export const Container = styled.section`
     p{
         font-size: 16px;
     }
+
+    &::before{
+        content: '';
+        width: 100%;
+        height: 80px;
+        background-color: #fff;
+        position: fixed;
+        bottom: auto;
+        top: 0;
+    }
+
+    @media(max-width: 550px){
+        padding: 140px ${defaultValues.padding} 40px;
+    }
 `
 
 export const Headings = styled.div`
-    width: 90%;
+    width: 100%;
     height: auto;
-    padding: 120px 30px 60px;
+    padding: 0px 0px 60px;
     text-align: left;
 
     h2{
@@ -31,18 +46,31 @@ export const Headings = styled.div`
     h2 + h2 {
         margin-top: 60px;
     }
+
+    @media(max-width: 550px){
+        padding: 0px 0px 40px;
+
+        h2{
+            font-size: 25px;
+        }
+
+        h2 + h2 {
+            margin-top: 40px;
+        }
+    }
 `
 
 export const Biographies = styled.div`
-    width: 90%;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    column-gap: 50px;
 
     p {
         width: 50%;
-        padding: 15px 30px;
+        padding: 15px 0px;
         font-size: 2.5vw;
     }
 
