@@ -7,7 +7,7 @@ export const Container = styled.main`
   display: block;
 `
 
-export const Cover = styled.section<{ bgUrl: string }>`
+export const Cover = styled.section<{ bgUrl: string, mobileBgUrl: string }>`
   width: 100%;
   height: 50vh;
 
@@ -18,6 +18,10 @@ export const Cover = styled.section<{ bgUrl: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media(max-width: 500px){
+    background-image: url(${props => props.mobileBgUrl});
+  }
 `
 
 export const ProjectCotent = styled.section`

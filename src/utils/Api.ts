@@ -4,6 +4,7 @@ import { redirect } from 'react-router-dom'
 export interface IProjectFields {
   animations: Asset[];
   cover: Asset;
+  coverMobile: Asset;
   color: {
     value: string;
   };
@@ -16,6 +17,7 @@ export interface IProjectFields {
   makingof: Asset[];
   mainMovie: string;
   title: string;
+  slug: string;
 }
 
 export interface IProject {
@@ -30,12 +32,18 @@ interface IHomeProjects {
 }
 
 interface IBiografia {
+  sys: {
+    id: string;
+  }
   fields: {
     description: string;
   }
 }
 
 export interface IAboutPage {
+  sys: {
+    id: string;
+  }
   fields: {
     title: string;
     manifesto: string;
@@ -63,9 +71,13 @@ export const loadProjects = async (): Promise<IProject[]> => {
     const homeProjects = await client.getEntry<IHomeProjects>('4GYvVZ6EVrbvY8b7fYG5re')
     return homeProjects.fields.projectsList
 }
-
-export const loadProject = async (id: string): Promise<Entry<IProjectFields>> => {
-  return await client.getEntry<IProjectFields>(id)
+// 
+export const loadProject = async (slug: string): Promise<Entry<IProjectFields>> => {
+  const projectList = await client.getEntries<IProjectFields>({
+    content_type: 'projetos',
+    'fields.slug[in]': slug,
+  })
+  return projectList.items[0]
 }
 
 export const loadAboutPage = async (): Promise<Entry<IAboutPage>> => {

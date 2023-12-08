@@ -22,7 +22,7 @@ const About: React.FC = () => {
             </Headings>
             <Biographies>
                 {aboutPage.fields.biografias.map(bio => (
-                    <Markdown key={"@"}>{bio.fields.description}</Markdown>
+                    <Markdown key={bio.sys.id}>{bio.fields.description}</Markdown>
                 ))}
             </Biographies>
         </Container>

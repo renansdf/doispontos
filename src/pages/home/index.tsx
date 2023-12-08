@@ -34,7 +34,7 @@ const Home: React.FC = () => {
             desktop: project.fields.coverFrames, 
             mobile: project.fields?.capaAnimadaMobile ?? undefined
           }}>
-          <Link to={`/projeto/${project.sys.id}`}>
+          <Link to={`/projeto/${project.fields.slug}`}>
             <LinkText 
               onTouchStart={() => {setFrameToggle(!frameToggle)}}
               onTouchEnd={() => {setFrameToggle(!frameToggle)}}
