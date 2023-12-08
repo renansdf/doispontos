@@ -14,9 +14,8 @@ const Project: React.FC = () => {
   const [project, setProject] = useState<IProject>()
 
   const load = useCallback(async () => {
-    if(params.projectid != null){
-      const loadedProject = await loadProject(params.projectid)
-      setProject(loadedProject)
+    if(params.slug != null){
+      setProject(await loadProject(params.slug))
     }
   },[params.projectid])
   
@@ -34,7 +33,10 @@ const Project: React.FC = () => {
   
   return (
     <Container>
-      <Cover bgUrl={project.fields.cover.fields.file.url ?? ''} />
+      <Cover 
+        bgUrl={project.fields.cover?.fields.file.url ?? ''} 
+        mobileBgUrl={project.fields.coverMobile?.fields.file.url ?? ''} 
+      />
       <ProjectCotent>
         <Title>{project.fields.title}</Title>
         <Description>
