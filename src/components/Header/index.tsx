@@ -8,26 +8,26 @@ import LogoUrl from '../../images/logo.png';
 import SobreImg from '../../images/sobre_com_faixa.png';
 import BotaoFechar from '../../images/botao_fechar.png';
 import { Container, CloseMenuButton, HamburguerMenuButton, Logo, MenuOverlay, SimpleBurguer } from './styles';
-import { useHeader } from '../../utils/HeaderThemeHook';
+import { useInterface } from '../../utils/InterfaceHook';
 
 const Header: React.FC = () => {
   const [visibility, setVisibility] = useState(false)
 
-  const { state } = useHeader();
+  const { headerState } = useInterface();
 
   return(
     <Container 
-      showBackground={state.showBackground}
-      menuColor={state.menuColor}
+      showBackground={headerState.showBackground}
+      menuColor={headerState.menuColor}
     >
       <Link to="/">
         <Logo src={LogoUrl} />
       </Link>
 
       <HamburguerMenuButton onClick={() => { setVisibility(!visibility) }}>
-        <SimpleBurguer bgColor={state.menuColor} />
-        <SimpleBurguer bgColor={state.menuColor} />
-        <SimpleBurguer bgColor={state.menuColor} />
+        <SimpleBurguer bgColor={headerState.menuColor} />
+        <SimpleBurguer bgColor={headerState.menuColor} />
+        <SimpleBurguer bgColor={headerState.menuColor} />
       </HamburguerMenuButton>
 
       <MenuOverlay isVisible={visibility}>

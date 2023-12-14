@@ -1,21 +1,21 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-import { HeaderProvider } from '../../utils/HeaderThemeHook'
+import { useInterface } from '../../utils/InterfaceHook'
 import Header from '../Header'
 import Footer from '../Footer'
 import { Wrapper, Content } from './styles'
 
 const Layout: React.FC = () => {
+    const { footerState } = useInterface();
+
     return (
         <Wrapper>
-            <HeaderProvider>
-                <Header />
-                <Content>
-                    <Outlet />
-                </Content>
-                <Footer />
-            </HeaderProvider>
+            <Header />
+            <Content>
+                <Outlet />
+            </Content>
+            {footerState.isVisible && <Footer />}
         </Wrapper>
     )
 }

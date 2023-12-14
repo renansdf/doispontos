@@ -4,7 +4,7 @@ import YouTube from 'react-youtube';
 import Markdown from 'react-markdown'
 
 import { type IProject, loadProject } from '../../utils/Api';
-import { useHeader } from '../../utils/HeaderThemeHook';
+import { useInterface } from '../../utils/InterfaceHook';
 
 import { Container, ProjectCotent, Cover, Title, Description, VideoWrapper, Image } from './styles';
 
@@ -23,10 +23,10 @@ const Project: React.FC = () => {
     load().catch(() => {navigate('/not-found')})
   }, [load]);
 
-  const { switchState } = useHeader()
+  const { switchHeaderState } = useInterface()
 
   useEffect(() => {
-      switchState({ menuColor: project?.fields.corDoMenu?.value ?? '', showBackground: false })
+      switchHeaderState({ menuColor: project?.fields.corDoMenu?.value ?? '', showBackground: false })
   }, [project])
 
   if(project === null || project === undefined) return (<></>)
@@ -42,9 +42,11 @@ const Project: React.FC = () => {
         <Description>
           <Markdown>{project.fields.projectDescription}</Markdown>
         </Description>
-        <VideoWrapper>
-          <YouTube videoId={project.fields.mainMovie} />
-        </VideoWrapper>
+        {project.fields.mainMovie !== undefined && (
+          <VideoWrapper>
+            <YouTube videoId={project.fields.mainMovie} />
+          </VideoWrapper>
+        )}
         {project.fields.makingof?.map((asset) => (
           <Image
             key={asset.fields.file.url}

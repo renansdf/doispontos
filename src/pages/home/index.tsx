@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 
-import { useHeader } from '../../utils/HeaderThemeHook'
+import { useInterface } from '../../utils/InterfaceHook'
 import { type IProject } from '../../utils/Api'
 import { Container, Project, LinkText } from './styles'
+import Footer from '../../components/Footer'
 
 const Home: React.FC = () => {
   const loadedProjects = useLoaderData() as IProject[]
@@ -18,12 +19,17 @@ const Home: React.FC = () => {
     setProjects(projectsList)
   }, [loadedProjects])
 
-  const { switchState } = useHeader()
+  const { switchHeaderState, hideFooter, showFooter } = useInterface()
 
   useEffect(() => {
-      switchState({ menuColor: '', showBackground: false })
+    switchHeaderState({ menuColor: '', showBackground: false })
+    hideFooter()
+
+    return () => {
+      showFooter()
+    }
   }, [])
-  
+
   return (
     <Container>
       {projects?.map(project => (
@@ -47,6 +53,7 @@ const Home: React.FC = () => {
           </Link>
         </Project>
       ))}
+      <Footer />
     </Container>
   );
 }
