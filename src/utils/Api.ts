@@ -4,6 +4,7 @@ import { redirect } from 'react-router-dom'
 export interface IProjectFields {
   animations: Asset[];
   cover: Asset;
+  thumbnail: Asset;
   coverMobile: Asset;
   color: {
     value: string;
@@ -28,7 +29,8 @@ export interface IProject {
 }
 
 interface IHomeProjects {
-  projectsList: IProject[]
+  allProjects: IProject[]
+  homeProjects: IProject[]
 }
 
 interface IBiografia {
@@ -68,10 +70,15 @@ const client = createContentfulClient()
 export const navigateToNotFound = (): Response => redirect('/not-found')
 
 export const loadProjects = async (): Promise<IProject[]> => {
-    const homeProjects = await client.getEntry<IHomeProjects>('4GYvVZ6EVrbvY8b7fYG5re')
-    return homeProjects.fields.projectsList
+    const projectLists = await client.getEntry<IHomeProjects>('58ZFkUWEOfSgv1SUg7qUCf')
+    return projectLists.fields.allProjects
 }
-// 
+
+export const loadHomeProjects = async (): Promise<IProject[]> => {
+  const projectLists = await client.getEntry<IHomeProjects>('58ZFkUWEOfSgv1SUg7qUCf')
+  return projectLists.fields.homeProjects
+}
+
 export const loadProject = async (slug: string): Promise<Entry<IProjectFields>> => {
   const projectList = await client.getEntries<IProjectFields>({
     content_type: 'projetos',

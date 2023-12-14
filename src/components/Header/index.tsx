@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import HomeImg from '../../images/home_com_faixa.png';
-// import ProjetosImg from '../../images/projetos_com_faixa.png';
+import ProjetosImg from '../../images/projetos_com_faixa.png';
 // import ContatoImg from '../../images/projetocontato_com_faixa.png';
 import LogoUrl from '../../images/logo.png';
 import SobreImg from '../../images/sobre_com_faixa.png';
@@ -33,8 +33,8 @@ const Header: React.FC = () => {
       <MenuOverlay isVisible={visibility}>
         <Link to="/" onClick={() => { setVisibility(!visibility) }}><img src={HomeImg} /></Link>
         <Link to="/sobre" onClick={() => { setVisibility(!visibility) }}><img src={SobreImg} /></Link>
+        <Link to="/projetos" onClick={() => { setVisibility(!visibility) }}><img src={ProjetosImg} /></Link>
         {/* <Link to="/contato" onClick={() => { setVisibility(!visibility) }}><img src={ContatoImg} /></Link> */}
-        {/* <Link to="/projetos" onClick={() => { setVisibility(!visibility) }}><img src={ProjetosImg} /></Link> */}
         <CloseMenuButton onClick={() => { setVisibility(!visibility) }}>
           <img src={BotaoFechar} alt="fechar menu" />
         </CloseMenuButton>

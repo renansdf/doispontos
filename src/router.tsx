@@ -1,12 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import Home from './pages/home';
+import Projects from './pages/projects';
 import Project from './pages/project';
 import About from './pages/about';
 import NotFound from './pages/notfound';
 import Layout from './components/Layout';
 
-import { loadProjects, loadAboutPage } from './utils/Api';
+import { loadProjects,loadHomeProjects, loadAboutPage } from './utils/Api';
 
 const Router = createBrowserRouter([
     {
@@ -15,6 +16,11 @@ const Router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+                loader: loadHomeProjects,
+            },
+            {
+                path: "/projetos",
+                element: <Projects />,
                 loader: loadProjects,
             },
             {
