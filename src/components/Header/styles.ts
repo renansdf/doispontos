@@ -133,8 +133,8 @@ export const MenuOverlay = styled.div<IContainerProps>`
   }
 `
 
-export const MenuBurger = styled.img`
-  width: 40px;
+export const Logo = styled.img`
+  width: 130px;
   height: auto;
 `
 

@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 import HomeImg from '../../images/home_com_faixa.png';
 // import ProjetosImg from '../../images/projetos_com_faixa.png';
 // import ContatoImg from '../../images/projetocontato_com_faixa.png';
+import LogoUrl from '../../images/logo.png';
 import SobreImg from '../../images/sobre_com_faixa.png';
-import FaixaContato from '../../images/faixa_contato.png';
-import FaixaHome from '../../images/faixa_home.png';
-import FaixaProjetos from '../../images/faixa_projetos.png';
 import BotaoFechar from '../../images/botao_fechar.png';
-import { Container, CloseMenuButton, HamburguerMenuButton, MenuOverlay, MenuBurger, SimpleBurguer } from './styles';
+import { Container, CloseMenuButton, HamburguerMenuButton, Logo, MenuOverlay, SimpleBurguer } from './styles';
 import { useHeader } from '../../utils/HeaderThemeHook';
 
 const Header: React.FC = () => {
@@ -23,23 +21,13 @@ const Header: React.FC = () => {
       menuColor={state.menuColor}
     >
       <Link to="/">
-        <h1>Dois Pontos</h1>
+        <Logo src={LogoUrl} />
       </Link>
 
       <HamburguerMenuButton onClick={() => { setVisibility(!visibility) }}>
-        {state.menuColor === '' ? (
-          <>
-            <MenuBurger src={FaixaContato} />
-            <MenuBurger src={FaixaHome} />
-            <MenuBurger src={FaixaProjetos} />
-          </>
-        ) : (
-          <>
-            <SimpleBurguer bgColor={state.menuColor} />
-            <SimpleBurguer bgColor={state.menuColor} />
-            <SimpleBurguer bgColor={state.menuColor} />
-          </>
-        )}
+        <SimpleBurguer bgColor={state.menuColor} />
+        <SimpleBurguer bgColor={state.menuColor} />
+        <SimpleBurguer bgColor={state.menuColor} />
       </HamburguerMenuButton>
 
       <MenuOverlay isVisible={visibility}>

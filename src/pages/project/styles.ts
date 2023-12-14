@@ -50,6 +50,10 @@ export const Description = styled.article`
   font-size: 21px;
   grid-column-start: span 4;
 
+  p + p{
+    margin-top: 15px;
+  }
+
   @media(max-width: 900px){
     grid-column-start: span 6;
   }
