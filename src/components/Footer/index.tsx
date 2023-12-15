@@ -8,9 +8,9 @@ const Footer: React.FC = () => {
     <Container>
       <FooterColumn>
         <img src={PASSARO} />
-        <a href="#" target='_blank'>instagram</a>
-        <a href="#" target='_blank'>youtube</a>
-        <a href="#" target='_blank'>linkedin</a>
+        <a href="https://instagram.com/estudio2pontos" target='_blank' rel="noreferrer">instagram</a>
+        <a href="https://youtube.com/estudio2pontos" target='_blank' rel="noreferrer">youtube</a>
+        <a href="#" target='_blank' rel="noreferrer">linkedin</a>
       </FooterColumn>
 
       <FooterColumn>

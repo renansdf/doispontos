@@ -104,12 +104,13 @@ export const MenuOverlay = styled.div<IContainerProps>`
   
   a {
     transform: translateX(25vw);
+    text-align: center;
   }
 
-  a:nth-child(1){ transition: transform .8s ease-in-out, letter-spacing .3s; }
-  a:nth-child(2){ transition: transform .95s ease-in-out, letter-spacing .3s; }
-  a:nth-child(3){ transition: transform 1.1s ease-in-out, letter-spacing .3s; }
-  a:nth-child(4){ transition: transform 1.25s ease-in-out, letter-spacing .3s; }
+  a:nth-child(1){ transition: transform .8s ease-in-out, letter-spacing .3s; img{ width: 75%; } }
+  a:nth-child(2){ transition: transform .95s ease-in-out, letter-spacing .3s; img{ width: 80%; } }
+  a:nth-child(3){ transition: transform 1.1s ease-in-out, letter-spacing .3s; img{ width: 100%; } }
+  a:nth-child(4){ transition: transform 1.25s ease-in-out, letter-spacing .3s; img{ width: 90%; } }
   
   ${props => props.isVisible && css`
     left: 0;
@@ -118,9 +119,11 @@ export const MenuOverlay = styled.div<IContainerProps>`
   `}
 
   a img{
-    width: 80%;
-    max-width: 550px;
+    width: 100%;
+    max-width: 500px;
     transition: transform .3s;
+    margin: -25px 0;
+    filter: saturate(1.5);
 
     &:hover{
       transform: scale(1.02);
@@ -129,7 +132,8 @@ export const MenuOverlay = styled.div<IContainerProps>`
 
   @media(max-width: 500px){
     a img{
-      width: 180px;
+      max-width: 100%;
+      margin: -15px 0;
     }
   }
 `
