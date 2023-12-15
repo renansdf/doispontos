@@ -26,7 +26,7 @@ const Project: React.FC = () => {
   const { switchHeaderState } = useInterface()
 
   useEffect(() => {
-      switchHeaderState({ menuColor: project?.fields.corDoMenu?.value ?? '', showBackground: false })
+      switchHeaderState({ menuColor: project?.fields.corDoMenu?.value ?? '', showBackground: true })
   }, [project])
 
   if(project === null || project === undefined) return (<></>)

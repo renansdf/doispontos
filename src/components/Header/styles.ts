@@ -109,6 +109,7 @@ export const MenuOverlay = styled.div<IContainerProps>`
   a:nth-child(1){ transition: transform .8s ease-in-out, letter-spacing .3s; }
   a:nth-child(2){ transition: transform .95s ease-in-out, letter-spacing .3s; }
   a:nth-child(3){ transition: transform 1.1s ease-in-out, letter-spacing .3s; }
+  a:nth-child(4){ transition: transform 1.25s ease-in-out, letter-spacing .3s; }
   
   ${props => props.isVisible && css`
     left: 0;

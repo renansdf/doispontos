@@ -20,6 +20,10 @@ export const Project = styled.article`
   a{
     color: #000;
   }
+
+  &:hover h2{
+    opacity: 1;
+  }
 `
 
 export const Title = styled.h2`
@@ -28,6 +32,9 @@ export const Title = styled.h2`
   font-weight: 400;
   font-size: 42px;
   margin: 20px 0 0;
+
+  opacity: 0;
+  transition: opacity .3s;
 
   @media(max-width: 1250px){
     font-size: 32px;

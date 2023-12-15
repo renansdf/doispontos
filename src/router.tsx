@@ -4,6 +4,7 @@ import Home from './pages/home';
 import Projects from './pages/projects';
 import Project from './pages/project';
 import About from './pages/about';
+import Contact from './pages/contact';
 import NotFound from './pages/notfound';
 import Layout from './components/Layout';
 
@@ -30,6 +31,11 @@ const Router = createBrowserRouter([
             {
                 path: "sobre",
                 element: <About />,
+                loader: loadAboutPage,
+            },
+            {
+                path: "contato",
+                element: <Contact />,
                 loader: loadAboutPage,
             }
             

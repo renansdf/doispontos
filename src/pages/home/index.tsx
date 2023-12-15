@@ -3,13 +3,13 @@ import { Link, useLoaderData } from 'react-router-dom'
 
 import { useInterface } from '../../utils/InterfaceHook'
 import { type IProject } from '../../utils/Api'
-import { Container, Project, LinkText } from './styles'
+import { Container, LinkText } from './styles'
 import Footer from '../../components/Footer'
+import Project from '../../components/Home/Project'
 
 const Home: React.FC = () => {
   const loadedProjects = useLoaderData() as IProject[]
   const [projects, setProjects] = useState<IProject[]>([] as IProject[])
-  const [frameToggle, setFrameToggle] = useState(false)
 
   useEffect(() => {
     const projectsList: IProject[] = []
@@ -34,20 +34,13 @@ const Home: React.FC = () => {
     <Container>
       {projects?.map(project => (
         <Project 
-          key={project.sys.id} 
-          frameStep={frameToggle} 
+          key={project.sys.id}
           animationFrames={{
             desktop: project.fields.coverFrames, 
             mobile: project.fields?.capaAnimadaMobile ?? undefined
           }}>
           <Link to={`/projeto/${project.fields.slug}`}>
-            <LinkText 
-              onTouchStart={() => {setFrameToggle(!frameToggle)}}
-              onTouchEnd={() => {setFrameToggle(!frameToggle)}}
-              onMouseEnter={() => {setFrameToggle(!frameToggle)}} 
-              onMouseLeave={() => {setFrameToggle(!frameToggle)}} 
-              hexColor={project.fields.color.value}
-            >
+            <LinkText hexColor={project.fields.color.value} >
               {project.fields.title}
             </LinkText>
           </Link>
