@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 import type { IProject } from '../../utils/Api'
 import { Container, Project, Image, Title } from './styles'
+import { useInterface } from '../../utils/InterfaceHook'
 
 const Projects: React.FC = () => {
   const projects = useLoaderData() as IProject[]
+  const { switchHeaderState } = useInterface()
+
+  useEffect(() => {
+      switchHeaderState({ menuColor: '', showBackground: false })
+  }, [])
 
   return (
     <Container>

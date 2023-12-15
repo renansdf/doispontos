@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { useInterface } from '../../utils/InterfaceHook';
 import Instagram from '../../images/instagram.png';
 import Youtube from '../../images/youtube.png';
 import Linkedin from '../../images/linkedin.png';
@@ -32,6 +33,12 @@ const socialNetworks: ISocialNetwork[] = [
 ]
 
 const Contato: React.FC = () => {
+  const { switchHeaderState } = useInterface()
+
+  useEffect(() => {
+      switchHeaderState({ menuColor: '', showBackground: true })
+  }, [])
+
   return (
     <Container>
       <Column>
