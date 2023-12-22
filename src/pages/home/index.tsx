@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   const { switchHeaderState, hideFooter, showFooter } = useInterface()
 
   useEffect(() => {
-    switchHeaderState({ menuColor: '', showBackground: false })
+    switchHeaderState({ menuColor: '', showBackground: true })
     hideFooter()
 
     return () => {

@@ -9,7 +9,7 @@ const Projects: React.FC = () => {
   const { switchHeaderState } = useInterface()
 
   useEffect(() => {
-      switchHeaderState({ menuColor: '', showBackground: false })
+      switchHeaderState({ menuColor: '', showBackground: true })
   }, [])
 
   return (
