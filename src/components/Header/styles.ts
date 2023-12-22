@@ -123,7 +123,7 @@ export const MenuOverlay = styled.div<IContainerProps>`
     max-width: 500px;
     transition: transform .3s;
     margin: -25px 0;
-    filter: saturate(1.5);
+    filter: saturate(1.4);
 
     &:hover{
       transform: scale(1.02);
@@ -131,9 +131,12 @@ export const MenuOverlay = styled.div<IContainerProps>`
   }
 
   @media(max-width: 500px){
+    a{
+      max-width: 85%;
+    }
     a img{
       max-width: 100%;
-      margin: -15px 0;
+      margin: -14px 0;
     }
   }
 `
