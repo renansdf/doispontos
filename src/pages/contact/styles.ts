@@ -70,6 +70,7 @@ export const SocialIcons = styled.div`
   img{
     max-width: 40px;
     max-height: 30px;
+    filter: grayscale(1);
   }
 
   a + a{
