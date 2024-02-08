@@ -21,7 +21,7 @@ const About: React.FC = () => {
                 <Markdown>{aboutPage.fields.manifesto}</Markdown>
             </Headings>
             <Biographies>
-                {aboutPage.fields.biografias.map(bio => (
+                {aboutPage.fields.biografias?.map(bio => (
                     <Markdown key={bio.sys.id}>{bio.fields.description}</Markdown>
                 ))}
             </Biographies>
