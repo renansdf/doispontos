@@ -144,6 +144,11 @@ export const MenuOverlay = styled.div<IContainerProps>`
 export const Logo = styled.img`
   width: 250px;
   height: auto;
+
+
+  @media(max-width: 500px){
+    width: 200px;
+  }
 `
 
 export const SimpleBurguer = styled.div<{bgColor: string}>`

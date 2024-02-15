@@ -35,12 +35,12 @@ export const FooterColumn = styled.section`
 
   img{
     max-width: 180px;
-    margin: 0px 0px 2px -4px;
+    margin: 0px 0px 3px -4px;
   }
 
   @media(max-width: 900px){
     img{
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
   }
 

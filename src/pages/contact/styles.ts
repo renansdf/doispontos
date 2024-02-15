@@ -48,6 +48,7 @@ export const Column = styled.section`
 export const Title = styled.h1`
   font-size: 4vw;
   font-weight: 400;
+  line-height: 1.1em;
 `
 
 export const CallToAction = styled.h2`

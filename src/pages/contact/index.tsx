@@ -21,10 +21,15 @@ const socialNetworks: ISocialNetwork[] = [
 ]
 
 const Contato: React.FC = () => {
-  const { switchHeaderState } = useInterface()
+  const { switchHeaderState, hideFooter, showFooter } = useInterface()
 
   useEffect(() => {
       switchHeaderState({ menuColor: '', showBackground: true })
+      hideFooter()
+
+      return () => {
+        showFooter()
+      }
   }, [])
 
   return (

@@ -5,6 +5,16 @@ export const Container = styled.main`
   max-height: 100vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  
+  footer {
+    margin-top: 90px;
+  }
+
+  @media(max-width: 580px){
+    footer {
+      margin-top: 0px;
+    }
+  }
 `;
 
 interface ILinkTextProps {
