@@ -34,8 +34,8 @@ export const FooterColumn = styled.section`
   }
 
   img{
-    max-width: 50px;
-    margin: 0px 0px 50px -12px;
+    max-width: 180px;
+    margin: 0px 0px 2px -4px;
   }
 
   @media(max-width: 900px){

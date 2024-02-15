@@ -142,7 +142,7 @@ export const MenuOverlay = styled.div<IContainerProps>`
 `
 
 export const Logo = styled.img`
-  width: 130px;
+  width: 250px;
   height: auto;
 `
 
