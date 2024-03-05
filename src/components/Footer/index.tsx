@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     <Container>
       <FooterColumn>
         <a href="https://www.instagram.com/_estudiopapel_" target='_blank' rel="noreferrer">instagram</a>
-        <a href="mailto:eestudiodepapel@gmail.com">eestudiodepapel@gmail.com</a>
+        <a href="mailto:oi@estudiodepapel.com.br">oi@estudiodepapel.com.br</a>
         <a href="tel:+55 21 999 920 032">+55 21 999 920 032</a>
       </FooterColumn>
 
